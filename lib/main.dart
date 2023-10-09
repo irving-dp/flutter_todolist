@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:todo_list/core/environment.dart';
 import 'package:todo_list/screen/todo_list.dart';
 
-void main() {
+Future<void> main() async {
+  await dotenv.load(fileName: Environtment.fileName);
   runApp(const MyApp());
 }
 

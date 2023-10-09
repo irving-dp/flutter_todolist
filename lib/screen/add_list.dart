@@ -1,6 +1,8 @@
+import 'dart:async';
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:todo_list/routes/navigate.dart';
 import 'package:todo_list/services/todo_service.dart';
 import 'package:todo_list/utils/snackbar_helper.dart';
 
@@ -82,6 +84,8 @@ class _AddListState extends State<AddList> {
       final responseJson = jsonDecode(response.body) as Map;
       // ignore: use_build_context_synchronously
       showSuccessMessage(context, responseJson['message']);
+      // ignore: use_build_context_synchronously
+      navigateToTodoList(context);
     } else {
       // ignore: use_build_context_synchronously
       showErrorMessage(context, 'error');
@@ -96,11 +100,14 @@ class _AddListState extends State<AddList> {
 
     final id = todo?['id'];
     final response = await TodoService.updateData(id, body);
-
+    // ignore: avoid_print
+    print(response.body);
     if (response.statusCode == 200) {
       final responseJson = jsonDecode(response.body) as Map;
       // ignore: use_build_context_synchronously
       showSuccessMessage(context, responseJson['message']);
+      // ignore: use_build_context_synchronously
+      navigateToTodoList(context);
     } else {
       // ignore: use_build_context_synchronously
       showErrorMessage(context, 'error');
