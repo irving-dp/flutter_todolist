@@ -1,6 +1,6 @@
-# todo_list
+# Simple Todo List App
 
-A new Flutter project.
+A new Flutter project for beginers like me :).
 
 ## Getting Started
 
